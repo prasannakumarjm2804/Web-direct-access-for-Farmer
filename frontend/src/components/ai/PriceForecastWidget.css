@@ -1,0 +1,67 @@
+.price-forecast-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+}
+
+.widget-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+}
+
+.widget-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.widget-controls input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.widget-controls button {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.current-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.current-price strong {
+    color: #16a34a;
+}
+
+.advisory-box {
+    background: #f0fdf4;
+    border-left: 4px solid #16a34a;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #166534;
+}
+
+.chart-container {
+    height: 200px;
+    width: 100%;
+}

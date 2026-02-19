@@ -1,0 +1,298 @@
+.marketplace-header {
+    margin-bottom: 32px;
+}
+
+.marketplace-header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.marketplace-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.marketplace-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 4px 4px 16px;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-fast);
+}
+
+.search-bar:focus-within {
+    border-color: var(--primary);
+}
+
+.search-icon {
+    color: var(--text-tertiary);
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    background: none;
+    font-size: 15px;
+    padding: 12px 8px;
+    color: var(--text-primary);
+}
+
+.search-bar input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.category-pills {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.category-pills::-webkit-scrollbar {
+    display: none;
+}
+
+.category-pill {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+    border-color: var(--primary-200);
+    color: var(--primary);
+}
+
+.category-pill.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.filters-panel {
+    margin-bottom: 24px;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+/* Crop Cards */
+.crops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.crop-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.crop-card a {
+    display: block;
+}
+
+.crop-image {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.crop-image-placeholder {
+    font-size: 72px;
+    opacity: 0.8;
+}
+
+.crop-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 6px;
+}
+
+.crop-info {
+    padding: 20px;
+}
+
+.crop-category-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-50);
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.crop-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.crop-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+
+.crop-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.crop-details-row {
+    margin-bottom: 12px;
+}
+
+.crop-qty {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.crop-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.price-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.price-unit {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.mandi-price {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    background: var(--bg-secondary);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.crop-farmer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.farmer-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.farmer-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: auto;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.page-btn.active,
+.page-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+    .crops-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .crops-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .marketplace-controls {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,138 @@
+.orders-header {
+    margin-bottom: 24px;
+}
+
+.orders-header h1 {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.orders-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.order-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.order-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.order-id strong {
+    font-size: 15px;
+}
+
+.order-date {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-left: 12px;
+}
+
+.order-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.order-crop {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.crop-emoji {
+    font-size: 40px;
+}
+
+.order-crop h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.order-crop p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.order-parties .party {
+    margin-bottom: 4px;
+}
+
+.party-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    display: block;
+}
+
+.party strong {
+    font-size: 14px;
+}
+
+.order-pricing {
+    display: flex;
+    gap: 20px;
+}
+
+.price-item {
+    text-align: center;
+}
+
+.price-item span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-bottom: 2px;
+}
+
+.price-item strong {
+    font-size: 16px;
+}
+
+.price-item.total strong {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+}
+
+.badge svg {
+    margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+    .order-body {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
