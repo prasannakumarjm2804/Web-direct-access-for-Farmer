@@ -1,8 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Provider, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import store from './store/store';
+import './App.css';
 
 // Layout
 import Navbar from './components/layout/Navbar';
@@ -28,15 +29,23 @@ import ExportPage from './pages/export/ExportPage';
 // Components
 import ProtectedRoute from './components/common/ProtectedRoute';
 import SmartAssistant from './components/ai/SmartAssistant';
+import QuickActionsButton from './components/common/QuickActionsButton';
 
-function App() {
+function AppContent() {
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { theme } = useSelector((state) => state.ui);
+  const location = useLocation();
+  const isAuthPage = ['/login', '/register'].includes(location.pathname);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme || 'light');
+  }, [theme]);
+
   return (
-    <Provider store={store}>
-      <Router>
-        <div className="app">
-          <Navbar />
-          <main>
-            <Routes>
+    <div className="app">
+      <Navbar />
+      <main>
+        <Routes>
               {/* Public Routes */}
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -90,27 +99,38 @@ function App() {
 
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: '#1c1917',
-              color: '#fafaf9',
-              borderRadius: '12px',
-              padding: '16px',
-              fontSize: '14px',
-              fontFamily: 'Inter, sans-serif',
-            },
-            success: { iconTheme: { primary: '#22c55e', secondary: '#fff' } },
-            error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
-          }}
-        />
-        <SmartAssistant />
+        </Routes>
+      </main>
+      {!isAuthPage && <Footer />}
+      {isAuthenticated && <QuickActionsButton userRole={user?.role} />}
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: 'var(--bg-card)',
+            color: 'var(--text-primary)',
+            borderRadius: '12px',
+            padding: '16px',
+            fontSize: '14px',
+            fontFamily: 'Inter, sans-serif',
+            border: '1px solid var(--border)',
+            boxShadow: 'var(--shadow-xl)',
+          },
+          success: { iconTheme: { primary: '#22c55e', secondary: '#fff' } },
+          error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
+        }}
+      />
+      <SmartAssistant />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Provider store={store}>
+      <Router>
+        <AppContent />
       </Router>
     </Provider>
   );

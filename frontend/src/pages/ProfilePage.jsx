@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProfile } from '../store/slices/authSlice';
 import { FiUser, FiPhone, FiMapPin, FiSave, FiShield, FiStar, FiCalendar } from 'react-icons/fi';
+import PageHeader from '../components/common/PageHeader';
+import FarmerProfileStats from '../components/profile/FarmerProfileStats';
 import toast from 'react-hot-toast';
 import './ProfilePage.css';
 
@@ -30,6 +32,12 @@ const ProfilePage = () => {
     return (
         <div className="profile-page page-wrapper">
             <div className="container">
+                <PageHeader
+                    badge="Account"
+                    title="My Profile"
+                    subtitle="Manage your personal information and account settings"
+                />
+
                 <div className="profile-layout">
                     {/* Left - Info Card */}
                     <div className="profile-sidebar">
@@ -141,6 +149,12 @@ const ProfilePage = () => {
                         </div>
                     </div>
                 </div>
+
+                {user?.role === 'farmer' && (
+                    <div className="profile-stats-section">
+                        <FarmerProfileStats farmer={user} />
+                    </div>
+                )}
             </div>
         </div>
     );

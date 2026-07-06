@@ -1,0 +1,268 @@
+/* ─── Floating Label Input ───────────────────────────────── */
+.floating-label-group {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.floating-input {
+    width: 100%;
+    padding: 16px 16px 16px 16px;
+    font-size: 15px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+    font-family: var(--font-body);
+}
+
+.floating-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.floating-input:disabled {
+    background: var(--bg-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.floating-label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: var(--text-tertiary);
+    pointer-events: none;
+    transition: all var(--transition-fast);
+    background: var(--bg-card);
+    padding: 0 4px;
+}
+
+.floating-label .required {
+    color: var(--error);
+}
+
+/* Floating label animation */
+.floating-label-group.focused .floating-label,
+.floating-label-group.has-value .floating-label {
+    top: 0;
+    left: 12px;
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    transform: translateY(-50%);
+}
+
+.floating-label-group.error .floating-label {
+    color: var(--error);
+}
+
+.floating-label-group.success .floating-label {
+    color: var(--success);
+}
+
+/* Input Icon */
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-tertiary);
+    pointer-events: none;
+    transition: color var(--transition-fast);
+}
+
+.input-wrapper .input-icon + .floating-input {
+    padding-left: 48px;
+}
+
+.input-wrapper .input-icon + .floating-input + .floating-label {
+    left: 48px;
+}
+
+.floating-label-group.focused .input-icon,
+.floating-label-group.has-value .input-icon {
+    color: var(--primary);
+}
+
+/* Password Toggle */
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    font-size: 18px;
+}
+
+.password-toggle:hover {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.input-wrapper .password-toggle + .floating-label {
+    right: 48px;
+}
+
+/* Input Status */
+.input-status {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.input-status.success {
+    color: var(--success);
+    background: var(--success-50);
+}
+
+.input-status.error {
+    color: var(--error);
+    background: #fee2e2;
+}
+
+.input-wrapper .input-status + .floating-label {
+    right: 48px;
+}
+
+/* Error and Success States */
+.floating-label-group.error .floating-input {
+    border-color: var(--error);
+}
+
+.floating-label-group.error .floating-input:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.floating-label-group.success .floating-input {
+    border-color: var(--success);
+}
+
+.floating-label-group.success .floating-input:focus {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.error-message {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--error);
+    font-weight: 500;
+    animation: slideDown 0.2s ease-out;
+}
+
+.success-message {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--success);
+    font-weight: 500;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Select Styling */
+.floating-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10L6 8z' fill='%23a8a29e'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.floating-select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10L6 8z' fill='%2316a34a'/%3E%3C/svg%3E");
+}
+
+.floating-select:disabled {
+    cursor: not-allowed;
+}
+
+/* Textarea Styling */
+.textarea-wrapper {
+    position: relative;
+}
+
+.floating-textarea {
+    resize: vertical;
+    min-height: 100px;
+    padding-top: 20px;
+}
+
+.textarea-wrapper .floating-label {
+    top: 20px;
+}
+
+.textarea-wrapper .input-status {
+    top: 20px;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .floating-input {
+    background: var(--bg-card);
+}
+
+[data-theme="dark"] .floating-label {
+    background: var(--bg-card);
+}
+
+[data-theme="dark"] .input-status.success {
+    background: rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="dark"] .input-status.error {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .floating-label {
+        font-size: 16px;
+    }
+
+    .floating-label-group.focused .floating-label,
+    .floating-label-group.has-value .floating-label {
+        font-size: 12px;
+    }
+}

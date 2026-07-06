@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCropById } from '../store/slices/cropSlice';
 import { createOrder } from '../store/slices/orderSlice';
-import { FiMapPin, FiStar, FiEye, FiCalendar, FiShield, FiMessageCircle, FiCheck, FiTrendingUp } from 'react-icons/fi';
+import { FiMapPin, FiStar, FiEye, FiCalendar, FiShield, FiMessageCircle, FiCheck, FiTrendingUp, FiArrowLeft } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import './CropDetailPage.css';
 
@@ -50,6 +50,9 @@ const CropDetailPage = () => {
     return (
         <div className="crop-detail-page page-wrapper">
             <div className="container">
+                <Link to="/marketplace" className="back-link">
+                    <FiArrowLeft /> Back to Marketplace
+                </Link>
                 <div className="detail-layout">
                     {/* Left - Crop Info */}
                     <div className="detail-main">

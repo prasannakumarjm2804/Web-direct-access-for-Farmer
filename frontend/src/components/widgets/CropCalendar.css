@@ -1,0 +1,386 @@
+/* ─── Crop Calendar Widget ───────────────────────────────── */
+.crop-calendar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.calendar-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendar-title svg {
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.calendar-title h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.month-selector {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.month-selector:hover {
+    border-color: var(--primary);
+}
+
+.month-selector:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.calendar-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.crops-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.crop-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.crop-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.crop-card.planting {
+    border-color: var(--primary);
+    background: var(--primary-50);
+}
+
+.crop-card.harvest {
+    border-color: var(--accent);
+    background: var(--accent-50);
+}
+
+.crop-card.growing {
+    border-color: var(--info);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.crop-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+
+.crop-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.crop-status {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+}
+
+.status-planting {
+    background: var(--primary-100);
+    color: var(--primary-700);
+}
+
+.status-harvest {
+    background: var(--accent-100);
+    color: var(--accent-dark);
+}
+
+.status-growing {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info);
+}
+
+.crop-seasons {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.season-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+}
+
+/* Crop Details */
+.crop-details {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    background: var(--primary-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--primary);
+}
+
+.detail-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.detail-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.detail-item svg {
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.detail-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.detail-timeline {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.detail-timeline h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.timeline-months {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.timeline-month {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    background: var(--bg-secondary);
+    transition: all var(--transition-fast);
+}
+
+.timeline-month.planting {
+    background: var(--primary-100);
+    color: var(--primary-700);
+}
+
+.timeline-month.growing {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info);
+}
+
+.timeline-month.harvest {
+    background: var(--accent-100);
+    color: var(--accent-dark);
+}
+
+.timeline-month.current {
+    box-shadow: 0 0 0 2px var(--primary);
+    transform: scale(1.1);
+}
+
+.month-abbr {
+    text-transform: uppercase;
+}
+
+.timeline-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.legend-dot.planting {
+    background: var(--primary);
+}
+
+.legend-dot.growing {
+    background: var(--info);
+}
+
+.legend-dot.harvest {
+    background: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .calendar-content {
+        grid-template-columns: 1fr;
+    }
+
+    .crops-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .crop-calendar {
+        padding: 16px;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .month-selector {
+        width: 100%;
+    }
+
+    .crops-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-months {
+        gap: 2px;
+    }
+
+    .timeline-month {
+        font-size: 9px;
+    }
+}
+
+/* Dark Mode */
+[data-theme="dark"] .crop-card.planting {
+    background: rgba(22, 163, 74, 0.1);
+}
+
+[data-theme="dark"] .crop-card.harvest {
+    background: rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="dark"] .crop-card.growing {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="dark"] .timeline-month.planting {
+    background: rgba(22, 163, 74, 0.2);
+}
+
+[data-theme="dark"] .timeline-month.growing {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .timeline-month.harvest {
+    background: rgba(245, 158, 11, 0.2);
+}

@@ -1,0 +1,230 @@
+/* ─── Weather Widget ───────────────────────────────────── */
+.weather-widget {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.weather-widget:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-hover);
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.weather-location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.weather-location svg {
+    color: var(--primary);
+}
+
+.weather-condition {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.weather-condition svg {
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.weather-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.weather-temp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.weather-temp svg {
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.temp-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+}
+
+.weather-details {
+    display: flex;
+    gap: 16px;
+}
+
+.weather-detail {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.weather-detail svg {
+    font-size: 16px;
+    color: var(--info);
+}
+
+.weather-tip {
+    background: var(--primary-50);
+    border: 1px solid var(--primary-200);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tip-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-700);
+}
+
+.tip-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.weather-forecast {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.forecast-day {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.forecast-icon {
+    font-size: 20px;
+    color: var(--text-primary);
+}
+
+.forecast-temp {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Loading State */
+.weather-loading {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-skeleton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.skeleton-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.skeleton-temp {
+    width: 80px;
+    height: 32px;
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-details {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Error State */
+.weather-error {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-tertiary);
+    font-size: 14px;
+}
+
+.weather-error svg {
+    font-size: 32px;
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .weather-tip {
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .weather-widget {
+        padding: 16px;
+    }
+
+    .temp-value {
+        font-size: 28px;
+    }
+
+    .weather-forecast {
+        gap: 8px;
+    }
+
+    .forecast-item {
+        flex: 1;
+    }
+}

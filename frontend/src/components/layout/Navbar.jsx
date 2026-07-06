@@ -2,16 +2,40 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
-import { FiMenu, FiX, FiUser, FiLogOut, FiShoppingBag, FiGrid, FiPlus, FiPackage, FiBell } from 'react-icons/fi';
+import { setLanguage } from '../../store/slices/uiSlice';
+import { FiMenu, FiX, FiUser, FiLogOut, FiGrid, FiPlus, FiPackage, FiSearch, FiGlobe } from 'react-icons/fi';
 import { GiWheat } from 'react-icons/gi';
+import ThemeToggle from '../common/ThemeToggle';
+import NotificationPanel from '../notifications/NotificationPanel';
 import './Navbar.css';
 
 const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [languageOpen, setLanguageOpen] = useState(false);
     const { isAuthenticated, user } = useSelector((state) => state.auth);
+    const { language } = useSelector((state) => state.ui);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const languages = [
+        { code: 'en', name: 'English', flag: '🇬🇧' },
+        { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
+        { code: 'ta', name: 'தமிழ்', flag: '🇮🇳' },
+        { code: 'te', name: 'తెలుగు', flag: '🇮🇳' },
+        { code: 'bn', name: 'বাংলা', flag: '🇮🇳' },
+    ];
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/marketplace?search=${encodeURIComponent(searchQuery)}`);
+            setSearchQuery('');
+            setSearchOpen(false);
+        }
+    };
 
     const handleLogout = () => {
         dispatch(logout());
@@ -55,6 +79,60 @@ const Navbar = () => {
 
                 {/* Right Section */}
                 <div className="nav-actions">
+                    {/* Search */}
+                    <div className="nav-search-wrapper">
+                        {searchOpen && (
+                            <form className="nav-search-form" onSubmit={handleSearch}>
+                                <input
+                                    type="text"
+                                    placeholder="Search crops, farmers..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    autoFocus
+                                />
+                                <button type="submit" className="search-submit">
+                                    <FiSearch />
+                                </button>
+                            </form>
+                        )}
+                        <button className="nav-icon-btn" onClick={() => setSearchOpen(!searchOpen)} title="Search">
+                            <FiSearch />
+                        </button>
+                    </div>
+
+                    {/* Language Selector */}
+                    <div className="nav-language-wrapper">
+                        <button
+                            className="nav-icon-btn"
+                            onClick={() => setLanguageOpen(!languageOpen)}
+                            title="Change Language"
+                        >
+                            <FiGlobe />
+                            <span className="language-code">{language.toUpperCase()}</span>
+                        </button>
+
+                        {languageOpen && (
+                            <div className="nav-dropdown language-dropdown">
+                                {languages.map((lang) => (
+                                    <button
+                                        key={lang.code}
+                                        className="dropdown-item"
+                                        onClick={() => {
+                                            dispatch(setLanguage(lang.code));
+                                            setLanguageOpen(false);
+                                        }}
+                                    >
+                                        <span className="lang-flag">{lang.flag}</span>
+                                        <span className="lang-name">{lang.name}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Theme Toggle */}
+                    <ThemeToggle />
+
                     {isAuthenticated ? (
                         <>
                             {user?.role === 'farmer' && (
@@ -63,10 +141,7 @@ const Navbar = () => {
                                 </Link>
                             )}
 
-                            <button className="nav-icon-btn" title="Notifications">
-                                <FiBell />
-                                <span className="notification-badge">3</span>
-                            </button>
+                            <NotificationPanel />
 
                             <div className="nav-profile-wrapper">
                                 <button

@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCrop } from '../store/slices/cropSlice';
 import { FiUpload, FiCheck, FiArrowRight, FiMapPin, FiDollarSign } from 'react-icons/fi';
+import PageHeader from '../components/common/PageHeader';
 import toast from 'react-hot-toast';
 import './AddCropPage.css';
-
 const CATEGORIES = ['grains', 'pulses', 'vegetables', 'fruits', 'spices', 'oilseeds', 'cotton', 'sugarcane', 'other'];
 const UNITS = ['kg', 'quintal', 'ton', 'pieces', 'dozen', 'bundle'];
 

@@ -1,138 +1,220 @@
-.orders-header {
-    margin-bottom: 24px;
+/* ─── Orders Page ────────────────────────────────────────── */
+.orders-page {
+  background: var(--bg-secondary);
 }
 
-.orders-header h1 {
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 4px;
-}
-
-.orders-header p {
-    color: var(--text-secondary);
-    font-size: 15px;
-}
-
+/* ─── Filter Chips ──────────────────────────────────────── */
 .order-filters {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
 }
 
+.filter-chip {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+}
+
+.filter-chip:hover {
+  border-color: var(--primary-200);
+  color: var(--primary);
+  background: var(--primary-50);
+}
+
+.filter-chip.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+/* ─── Orders List ───────────────────────────────────────── */
 .orders-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+/* ─── Order Card ────────────────────────────────────────── */
 .order-card {
-    padding: 0;
-    overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.25s ease;
 }
 
+.order-card:hover {
+  border-color: var(--primary-200);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* ─── Order Top ─────────────────────────────────────────── */
 .order-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.order-id {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .order-id strong {
-    font-size: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.3px;
 }
 
 .order-date {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    margin-left: 12px;
+  font-size: 12px;
+  color: var(--text-tertiary);
 }
 
+/* ─── Order Body ────────────────────────────────────────── */
 .order-body {
-    padding: 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-    align-items: center;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 24px;
+  align-items: center;
 }
 
+/* ─── Crop Info ─────────────────────────────────────────── */
 .order-crop {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .crop-emoji {
-    font-size: 40px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary-50), var(--accent-50));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  border: 1px solid var(--primary-100);
 }
 
 .order-crop h3 {
-    font-size: 16px;
-    margin-bottom: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
 .order-crop p {
-    font-size: 13px;
-    color: var(--text-secondary);
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
-.order-parties .party {
-    margin-bottom: 4px;
+/* ─── Parties ───────────────────────────────────────────── */
+.order-parties {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.party {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .party-label {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-tertiary);
 }
 
 .party strong {
-    font-size: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
+/* ─── Pricing ───────────────────────────────────────────── */
 .order-pricing {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .price-item {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
 }
 
 .price-item span {
-    display: block;
-    font-size: 12px;
-    color: var(--text-tertiary);
-    margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-tertiary);
 }
 
 .price-item strong {
-    font-size: 16px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-display);
 }
 
 .price-item.total strong {
-    color: var(--primary);
-    font-size: 18px;
+  color: var(--primary);
+  font-size: 22px;
 }
 
+/* ─── Actions ───────────────────────────────────────────── */
 .order-actions {
-    display: flex;
-    gap: 10px;
-    padding: 16px 24px;
-    border-top: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 14px 20px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
 }
 
-.badge svg {
-    margin-right: 4px;
-}
-
+/* ─── Responsive ────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .order-body {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+  .order-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .order-pricing {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 16px;
+  }
 }

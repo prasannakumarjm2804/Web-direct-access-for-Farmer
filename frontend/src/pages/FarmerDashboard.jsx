@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import { FiPlus, FiTrendingUp, FiPackage, FiDollarSign, FiList, FiStar, FiCloud, FiInfo, FiUsers, FiCreditCard } from 'react-icons/fi';
 import { GiWheat } from 'react-icons/gi';
 import PriceForecastWidget from '../components/ai/PriceForecastWidget';
+import PageHeader from '../components/common/PageHeader';
+import WeatherWidget from '../components/widgets/WeatherWidget';
+import CropCalendar from '../components/widgets/CropCalendar';
 import './DashboardPages.css';
 
 const FarmerDashboard = () => {
@@ -61,16 +64,15 @@ const FarmerDashboard = () => {
     return (
         <div className="dashboard-page page-wrapper">
             <div className="container">
-                {/* Welcome */}
-                <div className="dash-welcome">
-                    <div>
-                        <h1>🌾 Welcome, {user?.name?.split(' ')[0]}!</h1>
-                        <p>Here's your farm business overview</p>
-                    </div>
+                <PageHeader
+                    badge="Farmer Dashboard"
+                    title={`Welcome, ${user?.name?.split(' ')[0]}!`}
+                    subtitle="Here's your farm business overview — crops, orders, weather, and more."
+                >
                     <Link to="/farmer/add-crop" className="btn btn-primary">
                         <FiPlus /> List New Crop
                     </Link>
-                </div>
+                </PageHeader>
 
                 {/* Stats */}
                 <div className="dash-stats-grid">
@@ -94,6 +96,11 @@ const FarmerDashboard = () => {
                 </div>
 
                 <PriceForecastWidget />
+
+                <div className="dash-widgets-row">
+                    <WeatherWidget location={user?.location?.state || 'Delhi'} />
+                    <CropCalendar />
+                </div>
 
                 {/* Quick Actions */}
                 <div className="dash-section">

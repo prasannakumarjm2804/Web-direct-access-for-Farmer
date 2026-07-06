@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { GiWheat } from 'react-icons/gi';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiLinkedin, FiArrowUp } from 'react-icons/fi';
 import './Footer.css';
 
 const Footer = () => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const socialLinks = [
+        { icon: <FiFacebook />, name: 'Facebook', href: '#' },
+        { icon: <FiTwitter />, name: 'Twitter', href: '#' },
+        { icon: <FiInstagram />, name: 'Instagram', href: '#' },
+        { icon: <FiYoutube />, name: 'YouTube', href: '#' },
+        { icon: <FiLinkedin />, name: 'LinkedIn', href: '#' }
+    ];
+
     return (
         <footer className="footer">
             <div className="footer-wave">
@@ -32,6 +44,19 @@ const Footer = () => {
                                 <span><FiMail /> support@agriconnect.in</span>
                                 <span><FiMapPin /> New Delhi, India</span>
                             </div>
+                            <div className="footer-social">
+                                {socialLinks.map((social, index) => (
+                                    <a
+                                        key={index}
+                                        href={social.href}
+                                        className="social-link"
+                                        title={social.name}
+                                        aria-label={social.name}
+                                    >
+                                        {social.icon}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Quick Links */}
@@ -41,6 +66,7 @@ const Footer = () => {
                             <Link to="/about">About Us</Link>
                             <Link to="/register">Farmer Registration</Link>
                             <Link to="/register">Buyer Registration</Link>
+                            <Link to="/community">Community</Link>
                         </div>
 
                         <div className="footer-links-group">
@@ -49,6 +75,7 @@ const Footer = () => {
                             <a href="#">Weather Forecast</a>
                             <a href="#">Government Schemes</a>
                             <a href="#">Farming Tips</a>
+                            <a href="#">Crop Calendar</a>
                         </div>
 
                         <div className="footer-links-group">
@@ -57,6 +84,7 @@ const Footer = () => {
                             <a href="#">FAQs</a>
                             <a href="#">Terms of Service</a>
                             <a href="#">Privacy Policy</a>
+                            <a href="#">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -64,7 +92,12 @@ const Footer = () => {
 
             <div className="footer-bottom">
                 <div className="container">
-                    <p>© 2026 AgriConnect. Made with ❤️ for Indian Farmers. Supporting Digital India & AtmaNirbhar Bharat.</p>
+                    <div className="footer-bottom-content">
+                        <p>© 2026 AgriConnect. Made with ❤️ for Indian Farmers. Supporting Digital India & AtmaNirbhar Bharat.</p>
+                        <button className="scroll-top-btn" onClick={scrollToTop} title="Back to top">
+                            <FiArrowUp />
+                        </button>
+                    </div>
                 </div>
             </div>
         </footer>

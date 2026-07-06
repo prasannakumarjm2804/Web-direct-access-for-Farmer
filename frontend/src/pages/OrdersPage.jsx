@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFarmerOrders, fetchBuyerOrders, respondToOrder } from '../store/slices/orderSlice';
 import { motion } from 'framer-motion';
-import { FiPackage, FiCheck, FiX, FiClock, FiTruck, FiDollarSign } from 'react-icons/fi';
+import { FiPackage, FiCheck, FiX, FiClock, FiTruck } from 'react-icons/fi';
+import PageHeader from '../components/common/PageHeader';
+import SkeletonLoader from '../components/common/SkeletonLoader';
 import toast from 'react-hot-toast';
 import './OrdersPage.css';
 
@@ -51,12 +53,12 @@ const OrdersPage = () => {
     return (
         <div className="orders-page page-wrapper">
             <div className="container">
-                <div className="orders-header">
-                    <div>
-                        <h1><FiPackage /> My Orders</h1>
-                        <p>{orders.length} total orders</p>
-                    </div>
-                </div>
+                <PageHeader
+                    badge="Orders"
+                    title="My Orders"
+                    subtitle={`${orders.length} total orders`}
+                    icon={<FiPackage />}
+                />
 
                 <div className="order-filters">
                     {['all', 'pending', 'accepted', 'in_transit', 'completed', 'cancelled'].map(f => (
@@ -67,7 +69,7 @@ const OrdersPage = () => {
                 </div>
 
                 {loading ? (
-                    <div className="loading-page"><div className="spinner" /></div>
+                    <SkeletonLoader type="list" count={4} />
                 ) : filtered.length === 0 ? (
                     <div className="empty-state">
                         <div className="empty-state-icon">📦</div>

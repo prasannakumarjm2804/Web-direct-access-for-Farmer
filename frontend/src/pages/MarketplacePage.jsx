@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCrops, setFilters } from '../store/slices/cropSlice';
 import { motion } from 'framer-motion';
-import { FiSearch, FiFilter, FiMapPin, FiStar, FiEye, FiShoppingCart, FiX } from 'react-icons/fi';
+import { FiSearch, FiFilter, FiMapPin, FiStar, FiEye } from 'react-icons/fi';
+import PageHeader from '../components/common/PageHeader';
+import SkeletonLoader from '../components/common/SkeletonLoader';
 import './MarketplacePage.css';
 
 const CATEGORIES = [
@@ -53,13 +55,12 @@ const MarketplacePage = () => {
     return (
         <div className="marketplace-page page-wrapper">
             <div className="container">
-                {/* Header */}
-                <div className="marketplace-header">
-                    <div>
-                        <h1>🌾 Farm Fresh Marketplace</h1>
-                        <p>Browse {pagination?.total || 0} crop listings from verified farmers across India</p>
-                    </div>
-                </div>
+                <PageHeader
+                    badge="Marketplace"
+                    title="Farm Fresh Marketplace"
+                    subtitle={`Browse ${pagination?.total || 0} crop listings from verified farmers across India`}
+                    icon="🌾"
+                />
 
                 {/* Search & Filters */}
                 <div className="marketplace-controls">
@@ -138,9 +139,8 @@ const MarketplacePage = () => {
 
                 {/* Crop Grid */}
                 {loading ? (
-                    <div className="loading-page">
-                        <div className="spinner" />
-                        <p>Loading crops...</p>
+                    <div className="crops-grid">
+                        <SkeletonLoader type="card" count={6} />
                     </div>
                 ) : crops.length === 0 ? (
                     <div className="empty-state">

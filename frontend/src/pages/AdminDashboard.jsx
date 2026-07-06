@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import api from '../services/api';
 import { motion } from 'framer-motion';
-import { FiUsers, FiPackage, FiDollarSign, FiTrendingUp, FiShield, FiActivity, FiList, FiCheck, FiX } from 'react-icons/fi';
+import { FiUsers, FiPackage, FiDollarSign, FiActivity, FiList, FiCheck, FiX } from 'react-icons/fi';
 import { GiWheat } from 'react-icons/gi';
+import PageHeader from '../components/common/PageHeader';
 import './DashboardPages.css';
 
 const AdminDashboard = () => {
@@ -45,12 +46,11 @@ const AdminDashboard = () => {
     return (
         <div className="dashboard-page page-wrapper">
             <div className="container">
-                <div className="dash-welcome">
-                    <div>
-                        <h1>⚙️ Admin Dashboard</h1>
-                        <p>Platform overview and management</p>
-                    </div>
-                </div>
+                <PageHeader
+                    badge="Admin Panel"
+                    title="Platform Overview"
+                    subtitle="Monitor users, orders, and marketplace activity across AgriConnect."
+                />
 
                 {/* Admin Tabs */}
                 <div className="admin-tabs">

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import api from '../services/api';
 import { motion } from 'framer-motion';
 import { FiSearch, FiPackage, FiDollarSign, FiTrendingUp, FiShoppingCart, FiCheckCircle } from 'react-icons/fi';
+import PageHeader from '../components/common/PageHeader';
 import './DashboardPages.css';
 
 const BuyerDashboard = () => {
@@ -39,15 +40,15 @@ const BuyerDashboard = () => {
     return (
         <div className="dashboard-page page-wrapper">
             <div className="container">
-                <div className="dash-welcome">
-                    <div>
-                        <h1>🏪 Welcome, {user?.name?.split(' ')[0]}!</h1>
-                        <p>Find the best produce directly from farmers</p>
-                    </div>
+                <PageHeader
+                    badge="Buyer Dashboard"
+                    title={`Welcome, ${user?.name?.split(' ')[0]}!`}
+                    subtitle="Find the best produce directly from verified farmers across India."
+                >
                     <Link to="/marketplace" className="btn btn-primary">
                         <FiSearch /> Browse Marketplace
                     </Link>
-                </div>
+                </PageHeader>
 
                 <div className="dash-stats-grid">
                     {dashStats.map((s, i) => (
